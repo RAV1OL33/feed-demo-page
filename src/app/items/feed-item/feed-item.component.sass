@@ -1,0 +1,49 @@
+.feed-item__body
+    display: flex
+    flex-direction: column
+    max-width: 1375px
+    margin: auto
+    gap: 20px
+.feed-item__breadcrumbs
+    color: var(--bs-link-color)
+    margin-top: 15px
+.feed-item__title
+
+.feed-item__text div
+    display: flex
+    flex-direction: column
+.feed-item__text p:last-child
+    display: flex
+    flex-wrap: wrap 
+    gap: 1rem
+    background: var(--card-color)
+    border-radius: 5px
+    padding: 15px
+    a
+        width: 19%
+    img
+        width: 100% !important
+        height: auto !important
+        margin: 0 !important
+.feed-item__show-more
+
+    margin-bottom: 25px
+
+@media screen and (max-width: 768px) 
+    .feed-item__text a.photo 
+        width: 97% !important
+        height: auto !important
+
+    .feed-item__text a.photo img
+        width: 100% !important
+        height: auto !important
+        margin: 0 !important
+
+    .feed-item__text p:last-child
+        justify-content: center
+@media screen and (max-width: 1024px)
+    .feed-item__body
+        width:90%
+@media screen and (max-width: 1024px) and (min-width: 768px)
+    .feed-item__text p:last-child a
+        width: 18%

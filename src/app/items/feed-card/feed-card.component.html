@@ -1,0 +1,25 @@
+<div class="feed-card__container __card">
+    <div class="feed-card__body">
+        <div class="feed-card__image_fallback">
+            <div class="feed-card__image" style="background-image: url({{post.titleImageUrl}});">
+                   <div *ngIf="post.titleImageUrl=='data:image/jpeg;base64,'">
+                    No photo
+                   </div>
+            </div>
+        </div>
+
+        <div class="feed-card__description">
+            <div class="feed-card__description-container">
+                <div class="feed-card__description-container__header __title">
+                    {{post.title}}
+                </div>
+                <div class="feed-card__description-container__body">
+                    {{post.description}}
+                </div>
+            </div>
+            <div class="feed-card__date">
+                {{date_format}}
+            </div>
+        </div>
+    </div>
+</div>

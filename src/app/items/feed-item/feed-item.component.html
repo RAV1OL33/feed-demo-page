@@ -1,0 +1,24 @@
+
+<div class="feed-item__container" *ngIf="post">
+    <div class="feed-item__body">
+        <div class="feed-item__breadcrumbs">
+            <a routerLink="/">News</a>/<a routerLink="{{post.url}}">{{post.title}}</a>
+        </div>
+        <div class="feed-item__title __title">
+            {{post.title}}
+        </div>
+        <div class="feed-item__text">
+            <div [innerHTML]="post__text"></div>
+        </div>
+        <div class="feed-item__show-more __card">
+            <div class="feed-item__show-more__header __title">
+                Might be interesting
+            </div>
+            <div class="feed-item__show-more__body ">
+                <div *ngFor="let new_post of posts?.news" class="feed-item__show-more__item">
+                    <a href={{new_post.url}}>{{new_post.title}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
