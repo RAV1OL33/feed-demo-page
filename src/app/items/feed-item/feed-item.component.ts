@@ -26,7 +26,8 @@ export class FeedItemComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       let url = params.get('url');
       console.log(url)
-      this.service.getPost(url)
+      console.log(url)
+      this.service.getPost(this.router.url)
         .subscribe(response => {
           this.post = response;
           this.titleService.setTitle(this.post.title)

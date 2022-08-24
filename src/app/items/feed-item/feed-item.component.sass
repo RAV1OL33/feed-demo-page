@@ -12,6 +12,8 @@
 .feed-item__text div
     display: flex
     flex-direction: column
+    img
+        max-width: 100%
 .feed-item__text p:last-child
     display: flex
     flex-wrap: wrap 
@@ -25,6 +27,7 @@
         width: 100% !important
         height: auto !important
         margin: 0 !important
+        
 .feed-item__show-more
 
     margin-bottom: 25px
@@ -41,9 +44,7 @@
 
     .feed-item__text p:last-child
         justify-content: center
-@media screen and (max-width: 1024px)
-    .feed-item__body
-        width:90%
+
 @media screen and (max-width: 1024px) and (min-width: 768px)
     .feed-item__text p:last-child a
         width: 18%

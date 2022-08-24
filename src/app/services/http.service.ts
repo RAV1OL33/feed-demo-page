@@ -10,11 +10,11 @@ export class HttpService{
     constructor(private http: HttpClient){ }
       
     getPosts(page:any){
-      // console.log('asdasdad')
+      console.log(`https://webapi.autodoc.ru/api/news/1/${page}`)
       return this.http.get(`https://webapi.autodoc.ru/api/news/1/${page}`)
     }
     getPost(url:any){
-      // console.log('asdasdad')
-      return this.http.get(`https://webapi.autodoc.ru/api/news/item/avto-novosti/${url}`)
+      console.log(`https://webapi.autodoc.ru/api/news/item${url}`)
+      return this.http.get(`https://webapi.autodoc.ru/api/news/item${url}`)
     }
 }

@@ -7,6 +7,7 @@ import { FeedItemComponent } from './items/feed-item/feed-item.component';
 const routes: Routes = [
   
   {path: 'avto-novosti/:url', component: FeedItemComponent},
+  {path: 'novosti-kompanii/:url', component: FeedItemComponent},
   {path: '', component: FeedContainerComponent},
   
 ];
