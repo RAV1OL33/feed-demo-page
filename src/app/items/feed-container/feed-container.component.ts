@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, ReplaySubject } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
@@ -12,12 +12,17 @@ import { HttpService } from 'src/app/services/http.service';
 export class FeedContainerComponent implements OnInit {
 
   constructor(private service: HttpService, private formBuilder: FormBuilder) { }
+  // @ts-ignore
+  @ViewChild('fileInput') fileInput:ElementRef;
 
+ 
   feedGroup: any
   created_posts: any[] = []
   posts: any
   base64Output: string = ''
   pages = 10
+
+  test = false
 
   ngOnInit() {
     this.created_posts = JSON.parse(localStorage.getItem('created_posts') || '[]')
@@ -37,6 +42,10 @@ export class FeedContainerComponent implements OnInit {
       .subscribe(response => {
         this.posts = response;
       });
+
+  }
+  resetSelectedFile(){
+    this.fileInput.nativeElement.value = null
   }
   onSubmit() {
     console.log('onSubmit')
@@ -46,7 +55,7 @@ export class FeedContainerComponent implements OnInit {
       publishedDate: `${formatDate(new Date(), 'yyyy-MM-dd', 'en-US')}T00:00:00`,
       titleImageUrl: `data:image/jpeg;base64,${this.base64Output}`
     }
-    this.created_posts.push(res)
+    this.created_posts.unshift(res)
     console.log(this.created_posts)
     localStorage.setItem('created_posts', JSON.stringify(this.created_posts))
     this.feedGroup.reset()
@@ -63,11 +72,11 @@ export class FeedContainerComponent implements OnInit {
     const reader = new FileReader()
     reader.readAsBinaryString(file)
     reader.onload = (event) => {
-      if (event.target != null && event.target.result != null){
+      if (event.target != null && event.target.result != null) {
         result.next(btoa(event.target.result.toString()))
       }
     }
-    return result 
+    return result
   }
   get title() {
     return this.feedGroup.get('title')

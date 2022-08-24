@@ -4,7 +4,7 @@
         <div class="feed__item">
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="resetSelectedFile()">
                 Add post
             </button>
 
@@ -24,7 +24,7 @@
                                 <textarea type="text" formControlName="description" class="__width_100"
                                     placeholder="Description"></textarea>
                                 <span *ngIf="description.invalid && description.touched">Description is required</span>
-                                <input type="file" (change)="onFileSelected($event)" accept=".jpeg">
+                                <input #fileInput type="file" (change)="onFileSelected($event)" accept="image/*" >
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -35,14 +35,12 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
         <app-feed-card lass="feed__item" *ngFor="let post of created_posts" [post]="post"></app-feed-card>
         <app-feed-card lass="feed__item" *ngFor="let post of posts?.news" [post]="post" routerLink="{{post.url}}">
         </app-feed-card>
         <div class="__item_loading __card" *ngIf="!posts">
+            <!-- <div class="__item_loading __card" *ngIf="test"> -->
             <div class="spinner-border" role="status"> </div>
         </div>
     </div>
